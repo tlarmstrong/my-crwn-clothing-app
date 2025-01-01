@@ -9,6 +9,8 @@ import {
   signInWithRedirect,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 import {
@@ -37,6 +39,7 @@ googleProvider.setCustomParameters({
   'prompt': 'select_account'
 });
 
+// singleton
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 // export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
@@ -58,6 +61,9 @@ export const createUserDocumentFromAuth = async (
     const createdAt = new Date();
 
     try {
+      if(displayName) {
+        additionalInformation.displayName = displayName;
+      }
       await setDoc(userDocRef, {
         displayName, 
         email, 
@@ -79,6 +85,10 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signInUserWithEmailAndPassword = async (email, password) => {
   if(!email || !password) return;
-  
+
   return await signInWithEmailAndPassword(auth, email, password);
 }
+
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
