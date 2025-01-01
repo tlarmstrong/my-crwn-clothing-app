@@ -40,7 +40,13 @@ const SignInForm = () => {
       console.log(response);
       resetFormFields();
     } catch(error) {
-        console.log('Error fetching user with username and password', error.message);
+      switch(error.code) {
+        case 'auth/invalid-credential':
+          alert('Credentials invalid!');
+          break;
+        default:
+          console.log(error);
+      }
     }
   }
 
@@ -76,7 +82,7 @@ const SignInForm = () => {
         />
         <div className='buttons-container'>
           <Button type='submit'>Sign In</Button>
-          <Button onClick={ signInWithGoogle } buttonType='google'>Use Google</Button>
+          <Button type='button' onClick={ signInWithGoogle } buttonType='google'>Use Google</Button>
         </div>
       </form>
     </div>
