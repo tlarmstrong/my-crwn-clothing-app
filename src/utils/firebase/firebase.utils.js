@@ -51,6 +51,7 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 // singleton
 export const db = getFirestore();
 
+// used to populate the database from the frontend
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
@@ -60,7 +61,6 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
     batch.set(docRef, object);
   })
   await batch.commit();
-  console.log('done');
 }
 
 export const getCategoriesAndDocuments = async () => {
