@@ -10,13 +10,11 @@ import { CategoryTitle, CategoryContainer } from './category.styles';
 
 const Category = () => {
   const { category } = useParams();
-  console.log('render/rerendering category component');
   const categoriesMap = useSelector(selectCategoriesMap);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   // only want to update if the category or category map changes
   useEffect(() => {
-    console.log('effect fired calling setProducts');
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
 
