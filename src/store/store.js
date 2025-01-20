@@ -1,5 +1,4 @@
 // where all redux happens -- where our state lives, actions are received/dispatched
-
 import {
   compose,
   createStore,
@@ -8,18 +7,25 @@ import {
 
 import { persistStore, persistReducer } from 'redux-persist'; 
 import storage from 'redux-persist/lib/storage';
+import logger from 'redux-logger';
+import { thunk } from 'redux-thunk';
 
 import { rootReducer } from './root-reducer';
-
-import { middleWares } from './middleware/logger';
 
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['user']
+  whitelist: ['cart']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// middlewares: catch actions before they hit our reducers and log out state
+// only use in development
+const middleWares = [
+  process.env.NODE_ENV !== 'production' && logger,
+  thunk
+].filter(Boolean);
 
 const composeEnhancer = (
   process.env.NODE_ENV !== 'production' &&

@@ -1,5 +1,3 @@
-import logger from 'redux-logger';
-
 // example of custom middleware for logger
 // uses curried functions
 
@@ -17,6 +15,4 @@ import logger from 'redux-logger';
 }
 */
 
-// middlewares: catch actions before they hit our reducers and log out state
-// only use in development
-export const middleWares = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean);
+
