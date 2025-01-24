@@ -10,11 +10,9 @@ export const userReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch(type) {
-  case USER_ACTION_TYPES.SIGNIN_SUCCESS:
-    return { ...state, currentUser: payload };
-  case USER_ACTION_TYPES.SIGNIN_FAILED:
-    return { ...state, error: payload };
   case USER_ACTION_TYPES.CHECK_USER_SESSION:
+    return { ...state, currentUser: payload };
+  case USER_ACTION_TYPES.SIGNIN_SUCCESS:
     return { ...state, currentUser: payload };
   case USER_ACTION_TYPES.GOOGLE_SIGNIN_START:
     return { ...state, currentUser: payload };
@@ -24,7 +22,11 @@ export const userReducer = (state = INITIAL_STATE, action) => {
     return { ...state, currentUser: payload };
   case USER_ACTION_TYPES.SIGNUP_SUCCESS:
     return { ...state, currentUser: payload };
+  case USER_ACTION_TYPES.SIGNOUT_SUCCESS:
+    return { ...state,  currentUser: null };
   case USER_ACTION_TYPES.SIGNUP_FAILED:
+  case USER_ACTION_TYPES.SIGNIN_FAILED:
+  case USER_ACTION_TYPES.SIGNOUT_FAILED:
     return { ...state, error: payload };
   default:
     return state;
