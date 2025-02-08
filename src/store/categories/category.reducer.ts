@@ -9,6 +9,8 @@ import {
   fetchCategoriesFailed
 } from './category.action';
 
+import { Category } from './category.types';
+
 export type CategoriesState = {
   readonly categories: Category[];
   readonly isLoading: boolean;
