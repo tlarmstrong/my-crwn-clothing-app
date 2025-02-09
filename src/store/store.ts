@@ -2,10 +2,16 @@
 import {
   compose,
   createStore,
-  applyMiddleware
+  applyMiddleware,
+  Middleware
 } from 'redux';
 
-import { persistStore, persistReducer } from 'redux-persist'; 
+import { 
+  persistStore, 
+  persistReducer, 
+  PersistConfig 
+} from 'redux-persist'; 
+
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
@@ -13,7 +19,23 @@ import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from './root-saga';
 import { rootReducer } from './root-reducer';
 
-const persistConfig = {
+// typeof = getting the type of whatever we're calling this on
+// getting root reducer combined state (intersection of all states to corresponding slice keys)
+export type RootState = ReturnType<typeof rootReducer>
+
+// register dev tools
+declare global {
+  interface Windo {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
+  }
+}
+
+// define what whitelist can contain -- narrow with intersection 
+type ExtendedPersistConfig = PersistConfig<RootState> & {
+  whitelist: (keyof RootState)[]
+}
+
+const persistConfig: ExtendedPersistConfig = {
   key: 'root',
   storage,
   whitelist: ['cart']
@@ -27,7 +49,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const middleWares = [
   process.env.NODE_ENV !== 'production' && logger,
   sagaMiddleware
-].filter(Boolean);
+].filter((middleware): middleware is Middleware => Boolean(middleware)); // predicate type
 
 const composeEnhancer = (
   process.env.NODE_ENV !== 'production' &&

@@ -12,6 +12,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.5.0",
+    "@types/redux-logger": "^3.0.13",
     "dotenv": "^16.4.7",
     "firebase": "^11.1.0",
     "react": "^18.3.1",
@@ -26,14 +27,17 @@
     "reselect": "^5.1.1",
     "sass": "^1.83.0",
     "stripe": "^17.5.0",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "typed-redux-saga": "^1.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@jambit/eslint-plugin-typed-redux-saga": "^0.4.0",
     "@svgr/rollup": "^8.1.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
+    "babel-plugin-macros": "^3.1.0",
     "eslint": "^9.17.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
