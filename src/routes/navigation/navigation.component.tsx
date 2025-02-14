@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Outlet, Link } from "react-router";
+import { Outlet } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 
 import CartIcon from '../../components/cart-icon/cart-icon.component';
@@ -37,7 +37,7 @@ const Navigation = () => {
             Shop
           </NavLink>
           { currentUser ? (
-              <NavLink as='span' onClick={ signOutUser }>Sign Out</NavLink>
+              <NavLink to='' as='span' onClick={ signOutUser }>Sign Out</NavLink>
             ) : (
               <NavLink to='/auth'>Sign In</NavLink>
             )
