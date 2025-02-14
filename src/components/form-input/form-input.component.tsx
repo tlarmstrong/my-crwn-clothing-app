@@ -8,15 +8,15 @@ import {
 
 export type FormInputProps =  { label: string; } & InputHTMLAttributes<HTMLInputElement>
 
-const FormInput: FC<FormInputProps> = ({ label, inputOptions }) => {
+const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
   return (
     <Group>
-      <Input { ...inputOptions } />
+      <Input { ...otherProps } />
       { label && (
         <FormInputLabel shrink={ Boolean(
-          inputOptions.value && 
-          typeof inputOptions.value === 'string' && 
-          inputOptions.value.length
+          otherProps.value && 
+          typeof otherProps.value === 'string' && 
+          otherProps.value.length
         )}>
           { label }
         </FormInputLabel>

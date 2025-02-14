@@ -34,13 +34,7 @@ const SignInForm = () => {
       dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch(error) {
-      switch(error.code) {
-        case 'auth/invalid-credential':
-          alert('Credentials invalid!');
-          break;
-        default:
-          console.log(error);
-      }
+      console.log('Sign in failed', error);
     }
   }
 
@@ -56,23 +50,19 @@ const SignInForm = () => {
       <form onSubmit={ handleSubmit } >
         <FormInput 
           label='Email'
-          inputOptions = {{
-            type: 'email',
-            required: true,
-            onChange: handleChange,
-            name: 'email',
-            value: email 
-          }} 
+          type='email'
+          required
+          onChange={ handleChange }
+          name='email'
+          value={ email }
         />
         <FormInput
           label='Password'
-          inputOptions = {{
-            type: 'password',
-            required: true,
-            onChange: handleChange,
-            name: 'password',
-            value: password 
-          }} 
+          type='password'
+          required
+          onChange={ handleChange }
+          name='password'
+          value={ password }
         />
         <ButtonsContainer>
           <Button type='submit'>Sign In</Button>
