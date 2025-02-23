@@ -14,7 +14,6 @@ export const BackgroundImage = styled.div<BackgroundImageProps>`
 
 export const DirectoryItemBody = styled.div`
   height: 90px;
-  padding: 0 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,18 +22,23 @@ export const DirectoryItemBody = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
+  width: 20%;
 
   h2 {
     font-weight: bold;
     margin: 0 6px 0;
-    font-size: 22px;
+    font-size: large;
     color: #4a4a4a;
     text-transform: capitalize;
   }
 
   p {
     font-weight: lighter;
-    font-size: 16px;
+    font-size: smaller;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 30%;
   }
 `;
 
@@ -68,6 +72,10 @@ export const DirectoryItemContainer = styled.div`
 
   &:last-child {
     margin-left: 7.5px;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
   }
 `;
 

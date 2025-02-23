@@ -6,8 +6,13 @@ export const CheckoutItemContainer = styled.div`
   min-height: 100px;
   border-bottom: 1px solid darkgrey;
   padding: 15px 0;
-  font-size: 20px;
+  font-size: medium;
   align-items: center;
+  justify-content: space-between;
+
+  @media screen and (max-width: 800px) {
+    font-size: smaller;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -21,12 +26,22 @@ export const ImageContainer = styled.div`
 `;
 
 export const Name = styled.div`
-  width: 23%;
+  width: 25%;
+
+  @media screen and (max-width: 800px) {
+    width: 23%;
+  }
 `;
 
 export const Quantity = styled.div`
   width: 23%;
   display: flex;
+
+  @media screen and (max-width: 800px) {
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+  }
 `;
 
 export const Price = styled.div`

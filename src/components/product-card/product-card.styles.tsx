@@ -10,7 +10,6 @@ export const ProductCardContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 350px;
   align-items: center;
   position: relative;
 
@@ -27,7 +26,7 @@ export const ProductCardContainer = styled.div`
     width: 80%;
     opacity: 0.7;
     position: absolute;
-    top: 255px;
+    top: 70%;
     display: none;
   }
 
@@ -43,6 +42,10 @@ export const ProductCardContainer = styled.div`
       display: flex;
     }
   }
+
+  @media screen and (max-width: 800px) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const Footer = styled.div`
@@ -50,14 +53,17 @@ export const Footer = styled.div`
   height: 5%;
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: medium;
+
+  @media screen and (max-width: 800px) {
+    font-size: larger;
+  }
 `;
 
 export const Name = styled.span`
-  width: 90%;
-  margin-bottom: 15px;
+  max-width: 80%;
 `;
 
 export const Price = styled.span`
-  width: 10%;
+  margin-left: auto
 `;
