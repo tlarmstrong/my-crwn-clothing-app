@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import {
   BaseButton,
-  GoogleSignInButton,
   InvertedButton
 } from '../button/button.styles';
 
@@ -10,7 +9,6 @@ export const ProductCardContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 350px;
   align-items: center;
   position: relative;
 
@@ -22,12 +20,11 @@ export const ProductCardContainer = styled.div`
   }
 
   ${ BaseButton },
-  ${ GoogleSignInButton },
   ${ InvertedButton }  {
     width: 80%;
     opacity: 0.7;
     position: absolute;
-    top: 255px;
+    top: 75%;
     display: none;
   }
 
@@ -37,10 +34,30 @@ export const ProductCardContainer = styled.div`
     }
 
     ${ BaseButton },
-    ${ GoogleSignInButton },
     ${ InvertedButton }  {
       opacity: 0.85;
       display: flex;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    margin-bottom: 30px;
+
+    ${ BaseButton },
+    ${ InvertedButton } {
+      display: flex;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px;
+    }
+    &:hover {
+      img {
+        opacity: unset;
+      }
+      ${ BaseButton },
+      ${ InvertedButton } {
+        opacity: unset;
+      }
     }
   }
 `;
@@ -50,14 +67,17 @@ export const Footer = styled.div`
   height: 5%;
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: medium;
+
+  @media screen and (max-width: 400px) {
+    font-size: larger;
+  }
 `;
 
 export const Name = styled.span`
-  width: 90%;
-  margin-bottom: 15px;
+  max-width: 80%;
 `;
 
 export const Price = styled.span`
-  width: 10%;
+  margin-left: auto
 `;
